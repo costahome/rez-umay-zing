@@ -17,10 +17,10 @@ If not provided or ambiguous, list available profiles and ask the user to choose
 
 ### 1. Locate Profile
 
-Look up the profile in `~/.rez-umay-zing/profiles/`. If the user provided a partial match, find the best match by ID or company name.
+Look up the profile in `~/.rez-ame-zing/profiles/`. If the user provided a partial match, find the best match by ID or company name.
 
 ```powershell
-Get-ChildItem -Path "$env:USERPROFILE\.rez-umay-zing\profiles" -Directory | Where-Object { $_.Name -like "*<search>*" }
+Get-ChildItem -Path "$env:USERPROFILE\.rez-ame-zing\profiles" -Directory | Where-Object { $_.Name -like "*<search>*" }
 ```
 
 ### 2. Load Profile Data

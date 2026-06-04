@@ -24,7 +24,7 @@ If any required input is missing, ask the user for it.
 Check that the base resume exists:
 
 ```powershell
-Test-Path "$env:USERPROFILE\.rez-umay-zing\base-resume.md"
+Test-Path "$env:USERPROFILE\.rez-ame-zing\base-resume.md"
 ```
 
 If not found, tell the user to run the `init-resume` skill first.
@@ -33,7 +33,7 @@ If not found, tell the user to run the `init-resume` skill first.
 
 ### 1. Load Base Resume
 
-Read the base resume from `~/.rez-umay-zing/base-resume.md`.
+Read the base resume from `~/.rez-ame-zing/base-resume.md`.
 
 ### 2. Load or Read Job Description
 
@@ -90,7 +90,7 @@ Generate a profile ID: `{company-slug}-{title-slug}-{YYYYMMDD}-{4-char-hex}`
 Create the profile directory and files:
 
 ```
-~/.rez-umay-zing/profiles/{id}/
+~/.rez-ame-zing/profiles/{id}/
   profile.json
   resume.md
   job-description.md

@@ -1,6 +1,6 @@
 ---
 name: init-resume
-description: Initialize rez-umay-zing with a base resume from DOCX or PDF format. Extracts text and stores it for future customizations.
+description: Initialize rez-ame-zing with a base resume from DOCX or PDF format. Extracts text and stores it for future customizations.
 ---
 
 # Initialize Base Resume
@@ -30,7 +30,7 @@ If the file doesn't exist or has an unsupported extension, inform the user and a
 ### 2. Create Data Directory
 
 ```powershell
-New-Item -ItemType Directory -Path "$env:USERPROFILE\.rez-umay-zing" -Force
+New-Item -ItemType Directory -Path "$env:USERPROFILE\.rez-ame-zing" -Force
 ```
 
 ### 3. Extract Text
@@ -91,9 +91,9 @@ After extraction, review the raw text. Use your AI capabilities to:
 
 ### 5. Save Configuration
 
-Save the formatted resume to `~/.rez-umay-zing/base-resume.md`.
+Save the formatted resume to `~/.rez-ame-zing/base-resume.md`.
 
-Save metadata to `~/.rez-umay-zing/config.json`:
+Save metadata to `~/.rez-ame-zing/config.json`:
 
 ```json
 {
