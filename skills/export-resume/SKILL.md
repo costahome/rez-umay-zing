@@ -1,11 +1,11 @@
 ---
 name: export-resume
-description: Export a customized resume from a job profile to a file. Supports markdown output with clean formatting.
+description: Export a customized resume from a job profile to a file. Supports markdown, DOCX, and PDF output formats via pandoc conversion.
 ---
 
 # Export Resume
 
-Export the customized resume from a job profile to a file.
+Export the customized resume from a job profile to a file. Supports multiple output formats including DOCX and PDF via pandoc.
 
 ## Input
 
@@ -14,7 +14,7 @@ Required:
 
 Optional:
 - **Output path** — where to save the file (defaults to current directory with auto-generated name)
-- **Format** — `md` (markdown, default). Future: `docx`, `pdf`
+- **Format** — `md` (markdown, default), `docx` (Word), or `pdf`
 
 If no profile ID is provided, list profiles and ask the user to choose.
 
@@ -32,33 +32,58 @@ Read `resume.md` from the profile directory.
 
 If the user specified an output path, use it. Otherwise generate:
 ```
-{company}-{title}-resume.md
+{company}-{title}-resume.{format}
 ```
 
 in the current working directory.
 
 ### 4. Export
 
-Write the resume content to the output file:
+#### For markdown (`md`):
+
+Write the resume content directly:
 
 ```powershell
 $content = Get-Content -Path "$profileDir\resume.md" -Raw
 Set-Content -Path "<output-path>" -Value $content -Encoding UTF8
 ```
 
-### 5. Confirm
+#### For DOCX (`docx`):
+
+Convert using pandoc:
+
+```powershell
+pandoc "$profileDir\resume.md" -o "<output-path>" --from markdown --to docx
+```
+
+#### For PDF (`pdf`):
+
+Convert using pandoc (requires a PDF engine — tries pdflatex, falls back to built-in):
+
+```powershell
+pandoc "$profileDir\resume.md" -o "<output-path>" --from markdown --pdf-engine=pdflatex
+```
+
+If pdflatex is unavailable, try:
+```powershell
+pandoc "$profileDir\resume.md" -o "<output-path>" --from markdown --to pdf --pdf-engine=wkhtmltopdf
+```
+
+If no PDF engine is available, inform the user and suggest exporting to DOCX instead, which can be saved as PDF from Word or a similar application.
+
+### 5. Verify
+
+Check that the output file was created successfully:
+
+```powershell
+Test-Path "<output-path>"
+(Get-Item "<output-path>").Length
+```
+
+### 6. Confirm
 
 Display:
-- Output file path
+- Output file path and format
 - File size
 - Remind user of the profile it came from
-- Suggest reviewing the file and formatting as needed for submission
-
-## Future Format Support
-
-When DOCX/PDF export is needed, this skill can be extended to:
-- Use `pandoc` for markdown → DOCX/PDF conversion
-- Apply professional templates
-- Handle formatting that markdown can't express
-
-For now, markdown is the primary format — it's clean, portable, and easily converted with external tools.
+- For DOCX/PDF: note that further formatting (fonts, margins, templates) can be adjusted in the target application
