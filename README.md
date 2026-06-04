@@ -1,10 +1,10 @@
-# Rez-Ame-Zing 🎯
+# rez-umay-zing 🎯
 
 AI-powered resume customization agent for GitHub Copilot CLI.
 
 ## What It Does
 
-Rez-Ame-Zing helps you tailor your resume for specific job opportunities using AI, then tracks your application pipeline — all from within GitHub Copilot CLI.
+rez-umay-zing helps you tailor your resume for specific job opportunities using AI, then tracks your application pipeline — all from within GitHub Copilot CLI.
 
 ### Core Features
 
@@ -17,13 +17,13 @@ Rez-Ame-Zing helps you tailor your resume for specific job opportunities using A
 Install as a Copilot CLI plugin:
 
 ```bash
-copilot plugin install costahome/rez-ame-zing
+copilot plugin install costahome/rez-umay-zing
 ```
 
 Or install directly from local path:
 
 ```bash
-copilot plugin install --path /path/to/rez-ame-zing
+copilot plugin install --path /path/to/rez-umay-zing
 ```
 
 ## Usage
@@ -64,10 +64,10 @@ copilot plugin install --path /path/to/rez-ame-zing
 
 ## Data Storage
 
-All data is stored locally at `~/.rez-ame-zing/`:
+All data is stored locally at `~/.rez-umay-zing/`:
 
 ```
-~/.rez-ame-zing/
+~/.rez-umay-zing/
 ├── config.json            # Base resume metadata
 ├── base-resume.md         # Extracted base resume (markdown)
 └── profiles/

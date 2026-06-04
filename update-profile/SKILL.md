@@ -37,7 +37,7 @@ If no profile ID or update fields are provided, ask the user.
 
 ### 1. Locate Profile
 
-Find the profile by ID or partial match in `~/.rez-ame-zing/profiles/`.
+Find the profile by ID or partial match in `~/.rez-umay-zing/profiles/`.
 
 If ambiguous, list matches and ask user to confirm.
 

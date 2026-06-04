@@ -22,7 +22,7 @@ If no profile ID is provided, list profiles and ask the user to choose.
 
 ### 1. Locate Profile
 
-Find the profile by ID or partial match in `~/.rez-ame-zing/profiles/`.
+Find the profile by ID or partial match in `~/.rez-umay-zing/profiles/`.
 
 ### 2. Load Resume
 

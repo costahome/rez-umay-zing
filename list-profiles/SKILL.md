@@ -12,7 +12,7 @@ Display all saved job profiles in a clean, scannable format.
 ### 1. Check for Profiles
 
 ```powershell
-$profilesDir = "$env:USERPROFILE\.rez-ame-zing\profiles"
+$profilesDir = "$env:USERPROFILE\.rez-umay-zing\profiles"
 if (-not (Test-Path $profilesDir)) {
     Write-Output "No profiles found"
 } else {
