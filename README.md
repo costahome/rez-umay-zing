@@ -53,6 +53,129 @@ copilot plugin install --path /path/to/resumazing
 > Export the resume from my acme profile
 ```
 
+## Example Walkthrough
+
+Here's a typical end-to-end session, from importing your resume to exporting a
+tailored version for a specific job.
+
+### 1. Initialize your base resume
+
+**Prompt:**
+
+```
+> Use init-resume with my resume at ~/Documents/jane-doe-resume.docx
+```
+
+**Result:**
+
+```
+✓ Base resume imported from jane-doe-resume.docx
+  Stored at: ~/.resumazing/base-resume.md
+  9 sections detected · 642 words
+
+You're all set! Run customize-resume to tailor it for a job.
+```
+
+### 2. Customize for a job
+
+**Prompt:**
+
+```
+> Use customize-resume for a Senior Software Engineer role at Acme Corp.
+> Job description: ~/Downloads/acme-sse-jd.txt
+> Focus: emphasize distributed systems and team leadership
+```
+
+**Result:**
+
+```
+Tailored resume for Acme Corp — Senior Software Engineer
+
+Key changes I made:
+  • Rewrote the summary to lead with distributed systems + mentoring
+  • Surfaced your Kafka / event-driven work to match the JD's "high-throughput" requirement
+  • Reordered skills so Go, gRPC, and Kubernetes appear first
+  • Pulled forward the payments-platform project (matches "fault-tolerant services")
+  • Kept all dates, titles, and employers unchanged — nothing fabricated
+
+Keywords aligned: distributed systems, event-driven, observability, SLOs, mentoring
+
+Accept / Revise / Cancel?
+```
+
+**Prompt (iterate):**
+
+```
+> Revise: tighten the summary to two sentences and add my AWS experience
+```
+
+**Result:**
+
+```
+Updated. The summary is now two sentences and calls out AWS (EKS, SQS, DynamoDB).
+
+Accept / Revise / Cancel?
+
+> Accept
+
+✓ Saved profile: acme-corp-senior-software-engineer-20260606-7f3a
+  Status: considering
+```
+
+### 3. Track your pipeline
+
+**Prompt:**
+
+```
+> List my profiles
+```
+
+**Result:**
+
+```
+| # | Company   | Title                    | Status       | Pay Range  | Updated    |
+|---|-----------|--------------------------|--------------|------------|------------|
+| 1 | Acme Corp | Senior Software Engineer | considering  | —          | 2026-06-06 |
+| 2 | BigTech   | Staff Engineer           | interviewing | $190-220k  | 2026-06-02 |
+```
+
+**Prompt:**
+
+```
+> Update the acme profile: status applied, pay range $170-200k,
+> notes "Submitted via referral from Sam"
+```
+
+**Result:**
+
+```
+✓ Updated profile: Acme Corp — Senior Software Engineer
+
+Changes:
+  • Status: considering → applied
+  • Pay Range: set to $170-200k
+  • Notes: Added "[2026-06-06] Submitted via referral from Sam"
+```
+
+### 4. Export the tailored resume
+
+**Prompt:**
+
+```
+> Export the resume from my acme profile as docx
+```
+
+**Result:**
+
+```
+✓ Exported resume
+  Profile: Acme Corp — Senior Software Engineer
+  File:    ./acme-corp-senior-software-engineer-resume.docx
+  Format:  docx · 18.4 KB
+
+Open it in Word to fine-tune fonts and margins, or export to PDF from there.
+```
+
 ## Skills
 
 | Skill | Description |
