@@ -1,11 +1,11 @@
 {
-  "name": "rez-umay-zing",
+  "name": "resumazing",
   "description": "AI-powered resume customization agent. Initialize with a base resume, customize it for specific job descriptions using AI, and manage job application profiles with status tracking.",
   "version": "1.0.0",
   "author": {
     "name": "costahome"
   },
-  "repository": "https://github.com/costahome/rez-umay-zing",
+  "repository": "https://github.com/costahome/resumazing",
   "keywords": ["resume", "job-search", "ai", "customization", "career"],
   "agents": "agents/",
   "skills": "skills/"

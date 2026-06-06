@@ -21,10 +21,17 @@ If any required input is missing, ask the user for it.
 
 ## Prerequisites
 
-Check that the base resume exists:
+Resolve the data directory (migrating any legacy folder from a previous name so
+existing data is preserved), then check that the base resume exists:
 
 ```powershell
-Test-Path "$env:USERPROFILE\.rez-ame-zing\base-resume.md"
+$dataDir = "$env:USERPROFILE\.resumazing"
+if (-not (Test-Path $dataDir)) {
+    foreach ($legacy in @("$env:USERPROFILE\.rez-umay-zing", "$env:USERPROFILE\.rez-ame-zing")) {
+        if (Test-Path $legacy) { Rename-Item -LiteralPath $legacy -NewName ".resumazing"; break }
+    }
+}
+Test-Path "$dataDir\base-resume.md"
 ```
 
 If not found, tell the user to run the `init-resume` skill first.
@@ -33,7 +40,7 @@ If not found, tell the user to run the `init-resume` skill first.
 
 ### 1. Load Base Resume
 
-Read the base resume from `~/.rez-ame-zing/base-resume.md`.
+Read the base resume from `~/.resumazing/base-resume.md`.
 
 ### 2. Load or Read Job Description
 
@@ -90,7 +97,7 @@ Generate a profile ID: `{company-slug}-{title-slug}-{YYYYMMDD}-{4-char-hex}`
 Create the profile directory and files:
 
 ```
-~/.rez-ame-zing/profiles/{id}/
+~/.resumazing/profiles/{id}/
   profile.json
   resume.md
   job-description.md

@@ -37,7 +37,17 @@ If no profile ID or update fields are provided, ask the user.
 
 ### 1. Locate Profile
 
-Find the profile by ID or partial match in `~/.rez-ame-zing/profiles/`.
+Find the profile by ID or partial match in `~/.resumazing/profiles/` (migrate any
+legacy folder from a previous name first so existing profiles are preserved):
+
+```powershell
+$dataDir = "$env:USERPROFILE\.resumazing"
+if (-not (Test-Path $dataDir)) {
+    foreach ($legacy in @("$env:USERPROFILE\.rez-umay-zing", "$env:USERPROFILE\.rez-ame-zing")) {
+        if (Test-Path $legacy) { Rename-Item -LiteralPath $legacy -NewName ".resumazing"; break }
+    }
+}
+```
 
 If ambiguous, list matches and ask user to confirm.
 

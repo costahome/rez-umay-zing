@@ -1,6 +1,6 @@
 ---
 name: init-resume
-description: Initialize rez-ame-zing with a base resume from DOCX or PDF format. Extracts text and stores it for future customizations.
+description: Initialize resumazing with a base resume from DOCX or PDF format. Extracts text and stores it for future customizations.
 ---
 
 # Initialize Base Resume
@@ -29,8 +29,18 @@ If the file doesn't exist or has an unsupported extension, inform the user and a
 
 ### 2. Create Data Directory
 
+Data lives in `~/.resumazing`. Resolve the directory, migrating any legacy folder
+from a previous name (`~/.rez-umay-zing` or `~/.rez-ame-zing`) so existing data is
+never lost:
+
 ```powershell
-New-Item -ItemType Directory -Path "$env:USERPROFILE\.rez-ame-zing" -Force
+$dataDir = "$env:USERPROFILE\.resumazing"
+if (-not (Test-Path $dataDir)) {
+    foreach ($legacy in @("$env:USERPROFILE\.rez-umay-zing", "$env:USERPROFILE\.rez-ame-zing")) {
+        if (Test-Path $legacy) { Rename-Item -LiteralPath $legacy -NewName ".resumazing"; break }
+    }
+}
+New-Item -ItemType Directory -Path $dataDir -Force
 ```
 
 ### 3. Extract Text
@@ -91,9 +101,9 @@ After extraction, review the raw text. Use your AI capabilities to:
 
 ### 5. Save Configuration
 
-Save the formatted resume to `~/.rez-ame-zing/base-resume.md`.
+Save the formatted resume to `~/.resumazing/base-resume.md`.
 
-Save metadata to `~/.rez-ame-zing/config.json`:
+Save metadata to `~/.resumazing/config.json`:
 
 ```json
 {

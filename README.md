@@ -1,10 +1,12 @@
-# rez-umay-zing 🎯
+# resumazing 🎯
+
+_Pronounced **rez-uh-may-zing** (like "resume" + "amazing")._
 
 AI-powered resume customization agent for GitHub Copilot CLI.
 
 ## What It Does
 
-rez-umay-zing helps you tailor your resume for specific job opportunities using AI, then tracks your application pipeline — all from within GitHub Copilot CLI.
+resumazing helps you tailor your resume for specific job opportunities using AI, then tracks your application pipeline — all from within GitHub Copilot CLI.
 
 ### Core Features
 
@@ -17,13 +19,13 @@ rez-umay-zing helps you tailor your resume for specific job opportunities using 
 Install as a Copilot CLI plugin:
 
 ```bash
-copilot plugin install costahome/rez-umay-zing
+copilot plugin install costahome/resumazing
 ```
 
 Or install directly from local path:
 
 ```bash
-copilot plugin install --path /path/to/rez-umay-zing
+copilot plugin install --path /path/to/resumazing
 ```
 
 ## Usage
@@ -64,10 +66,10 @@ copilot plugin install --path /path/to/rez-umay-zing
 
 ## Data Storage
 
-All data is stored locally at `~/.rez-umay-zing/`:
+All data is stored locally at `~/.resumazing/`:
 
 ```
-~/.rez-umay-zing/
+~/.resumazing/
 ├── config.json            # Base resume metadata
 ├── base-resume.md         # Extracted base resume (markdown)
 └── profiles/
@@ -76,6 +78,11 @@ All data is stored locally at `~/.rez-umay-zing/`:
         ├── resume.md          # Customized resume
         └── job-description.md # Original JD
 ```
+
+> **Upgrading?** If you previously used this project under its old names
+> (`~/.rez-umay-zing/` or `~/.rez-ame-zing/`), your existing data is preserved.
+> The skills automatically migrate the legacy folder to `~/.resumazing/` on first
+> use, so all your profiles, base resume, and config carry over.
 
 ## Profile Statuses
 

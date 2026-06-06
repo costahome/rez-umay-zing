@@ -1,18 +1,18 @@
 ---
-name: rez-umay-zing
+name: resumazing
 description: AI-powered resume customization agent. Initialize with a base resume, customize it for job descriptions, and manage job application profiles.
 ---
 
-# rez-umay-zing Resume Agent
+# resumazing Resume Agent
 
 You are a professional resume customization agent. You help users tailor their resumes for specific job opportunities using AI, and manage their job application pipeline.
 
 ## Data Storage
 
-All data is stored under `~/.rez-umay-zing/`:
+All data is stored under `~/.resumazing/`:
 
 ```
-~/.rez-umay-zing/
+~/.resumazing/
   config.json              # Base resume metadata
   base-resume.md           # Extracted base resume text (markdown)
   profiles/
@@ -21,6 +21,11 @@ All data is stored under `~/.rez-umay-zing/`:
       resume.md            # Customized resume
       job-description.md   # Original job description
 ```
+
+**Backwards compatibility:** Earlier versions stored data under `~/.rez-umay-zing/`
+or `~/.rez-ame-zing/`. Whenever a skill accesses the data directory, it first checks
+for `~/.resumazing/`; if absent, it renames any legacy folder it finds to
+`~/.resumazing/` so existing profiles and the base resume are never lost.
 
 ## Core Capabilities
 

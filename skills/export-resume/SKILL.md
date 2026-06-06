@@ -22,7 +22,17 @@ If no profile ID is provided, list profiles and ask the user to choose.
 
 ### 1. Locate Profile
 
-Find the profile by ID or partial match in `~/.rez-ame-zing/profiles/`.
+Find the profile by ID or partial match in `~/.resumazing/profiles/` (migrate any
+legacy folder from a previous name first so existing profiles are preserved):
+
+```powershell
+$dataDir = "$env:USERPROFILE\.resumazing"
+if (-not (Test-Path $dataDir)) {
+    foreach ($legacy in @("$env:USERPROFILE\.rez-umay-zing", "$env:USERPROFILE\.rez-ame-zing")) {
+        if (Test-Path $legacy) { Rename-Item -LiteralPath $legacy -NewName ".resumazing"; break }
+    }
+}
+```
 
 ### 2. Load Resume
 

@@ -17,10 +17,16 @@ If not provided or ambiguous, list available profiles and ask the user to choose
 
 ### 1. Locate Profile
 
-Look up the profile in `~/.rez-ame-zing/profiles/`. If the user provided a partial match, find the best match by ID or company name.
+Look up the profile in `~/.resumazing/profiles/`. If the user provided a partial match, find the best match by ID or company name.
 
 ```powershell
-Get-ChildItem -Path "$env:USERPROFILE\.rez-ame-zing\profiles" -Directory | Where-Object { $_.Name -like "*<search>*" }
+$dataDir = "$env:USERPROFILE\.resumazing"
+if (-not (Test-Path $dataDir)) {
+    foreach ($legacy in @("$env:USERPROFILE\.rez-umay-zing", "$env:USERPROFILE\.rez-ame-zing")) {
+        if (Test-Path $legacy) { Rename-Item -LiteralPath $legacy -NewName ".resumazing"; break }
+    }
+}
+Get-ChildItem -Path "$dataDir\profiles" -Directory | Where-Object { $_.Name -like "*<search>*" }
 ```
 
 ### 2. Load Profile Data
